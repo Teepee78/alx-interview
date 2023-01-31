@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 
 def canUnlockAll(boxes):
+    """
+    Checks if all boxes can be unlocked
+
+    Args:
+        boxes (list): list of boxes to check
+
+    Returns:
+        bool: True if all boxes can be unlocked, False otherwise
+    """
     i = len(boxes)
 
     # Create map
