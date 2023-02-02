@@ -14,13 +14,6 @@ def canUnlockAll(boxes):
     Returns:
         bool: True if all boxes can be unlocked, False otherwise
     """
-    i = len(boxes)
-
-    # if len(boxes) == 1:
-    #     return True
-    # if len(boxes) < 1:
-    #     return False
-
     # Create map
     map = {}
     for i, box in enumerate(boxes):
@@ -36,6 +29,18 @@ def canUnlockAll(boxes):
             }
 
     # Iterate map and open boxes
+    i = len(boxes)
+    while i > 0:
+        for box in map.values():
+            if box['open']:
+                # Open all boxes that box holds key for
+                for item in box['items']:
+                    if item < len(boxes) and item >= 0:
+                        map[item]['open'] = True
+        i -= 1
+
+    # Iterate map and open boxes again
+    i = len(boxes)
     while i > 0:
         for box in map.values():
             if box['open']:
