@@ -16,8 +16,8 @@ def canUnlockAll(boxes):
     """
     i = len(boxes)
 
-    if len(boxes) < 1:
-        return False
+    if len(boxes) < 2:
+        return True
 
     # Create map
     map = {}
