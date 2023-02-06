@@ -14,6 +14,9 @@ def canUnlockAll(boxes):
     Returns:
         bool: True if all boxes can be unlocked, False otherwise
     """
+    if type(boxes) != list:
+        return False
+
     # Create map
     map = {}
     for i, box in enumerate(boxes):
