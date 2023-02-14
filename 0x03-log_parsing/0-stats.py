@@ -52,5 +52,5 @@ if __name__ == "__main__":
 
             else:
                 continue
-    except KeyboardInterrupt:
+    except (KeyboardInterrupt, EOFError):
         print_logs()
