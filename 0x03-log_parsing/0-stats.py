@@ -42,9 +42,9 @@ if __name__ == "__main__":
     try:
         while True:
             log = input()
-            line_count += 1
             if re.match(regex, log):
                 logs.append(log)
+                line_count += 1
                 if line_count % 10 == 0:
                     print_logs()
                     logs.clear()
