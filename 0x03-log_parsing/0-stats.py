@@ -21,7 +21,7 @@ status_codes = {
 size = 0
 
 
-def print_logs():
+def print_logs() -> None:
     """Prints logs"""
     global size
 
