@@ -48,6 +48,7 @@ if __name__ == "__main__":
                 if line_count % 10 == 0:
                     print_logs()
                     logs.clear()
+                    line_count = 0
 
             else:
                 continue
