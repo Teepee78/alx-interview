@@ -2,7 +2,11 @@
 """Reads stdin line by line and computes metrics"""
 import re
 
-regex = r'^([\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}) - \[(.*)\] "GET \/projects\/260 HTTP\/1\.1" (\d+) (\d+)$'
+regex = (
+    r'^([\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}\.[\d]{1,3}) - '
+    r'\[(.*)\] "GET \/projects\/260 HTTP\/1\.1" (\d+) (\d+)$'
+)
+
 logs = []
 status_codes = {
     200: 0,
@@ -27,10 +31,10 @@ def print_logs():
         if status_code in status_codes:
             status_codes[status_code] += 1
 
-        print(f"File size: {size}")
-        for key, value in status_codes.items():
-            if value > 0:
-                print(f"{key}: {value}")
+    print("File size: {}".format(size))
+    for key, value in status_codes.items():
+        if value > 0:
+            print(f"{key}: {value}")
 
 
 i = 0
@@ -42,11 +46,10 @@ try:
             i += 1
             if i == 10:
                 print_logs()
+                logs.clear()
                 i = 0
 
         else:
             continue
-
-    print(logs[0])
 except KeyboardInterrupt:
     print_logs()
