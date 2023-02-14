@@ -37,19 +37,20 @@ def print_logs() -> None:
             print("{}: {}".format(key, value))
 
 
-i = 0
-try:
-    while i < 10:
-        log = input()
-        if re.match(regex, log):
-            logs.append(log)
-            i += 1
-            if i == 10:
-                print_logs()
-                logs.clear()
-                i = 0
+if __name__ == "__main__":
+    i = 0
+    try:
+        while i < 10:
+            log = input()
+            if re.match(regex, log):
+                logs.append(log)
+                i += 1
+                if i == 10:
+                    print_logs()
+                    logs.clear()
+                    i = 0
 
-        else:
-            continue
-except KeyboardInterrupt:
-    print_logs()
+            else:
+                continue
+    except KeyboardInterrupt:
+        print_logs()
