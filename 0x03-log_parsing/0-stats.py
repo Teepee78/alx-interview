@@ -34,7 +34,7 @@ def print_logs():
     print("File size: {}".format(size))
     for key, value in status_codes.items():
         if value > 0:
-            print(f"{key}: {value}")
+            print("{}: {}".format(key, value))
 
 
 i = 0
