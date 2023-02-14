@@ -19,6 +19,7 @@ status_codes = {
     500: 0
 }
 size = 0
+line_count = 0
 
 
 def print_logs() -> None:
@@ -38,17 +39,15 @@ def print_logs() -> None:
 
 
 if __name__ == "__main__":
-    i = 0
     try:
-        while i < 10:
+        while True:
             log = input()
+            line_count += 1
             if re.match(regex, log):
                 logs.append(log)
-                i += 1
-                if i == 10:
+                if line_count % 10 == 0:
                     print_logs()
                     logs.clear()
-                    i = 0
 
             else:
                 continue
