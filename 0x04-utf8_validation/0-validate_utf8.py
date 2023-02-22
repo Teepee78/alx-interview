@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """Defines the validUTF8 function"""
-from typing import List
 
 
-def validUTF8(data: List[int]) -> bool:
+def validUTF8(data):
     """Checks if a given dataset represents a valid UTF8 encoding
 
     Args:
