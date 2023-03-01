@@ -115,51 +115,72 @@ def vertical(result: list, x: int, y: int):
 
 RESULTS = []
 
-# For each starting point
-for big_y in range(N):
-    y = big_y
-    result = []
 
-    # Check each possibility
-    while y < N:
-        x = 0
-        # Check all cells in x axis
-        while y < N and x < N:
-            # print(x, y)
-            if diagonal(result, x, y) and vertical(result, x, y):
-                result.append([x, y])
-                # print(result)
-                y = 0
-                x += 1
-            elif y == (N - 1):
-                # Backtrack
-                # print("Backtracking", result)
-                prev = result[-1]
-                if prev[1] + 1 == N:
-                    while len(result) > 0:
+def compute(x: int, y: int):
+    """Compute queens
+
+    Args:
+        x (int): x
+        y (int): y
+    """
+
+    # For each starting point
+    for big_y in range(N):
+        y = big_y
+        result = []
+        index = 0
+
+        # Check each possibility
+        while y < N:
+            x = 0
+            # Check all cells in x axis
+            while y < N and x < N:
+                # print(x, y)
+                if diagonal(result, x, y) and vertical(result, x, y):
+                    result.append([x, y])
+                    # print(result)
+                    y = 0
+                    x += 1
+                elif y == (N - 1):
+                    # Backtrack
+                    # print("Backtracking", result)
+                    prev = result[-1]
+                    if prev[1] + 1 == N:
+                        while len(result) > 0:
+                            result.pop()
+                            if len(result) == 0:
+                                y += 1
+                                break
+                            x = result[-1][0]
+                            y = result[-1][1] + 1
+                            if y < N:
+                                break
+                    else:
+                        y = prev[1] + 1
+                        x = prev[0]
                         result.pop()
-                        if len(result) == 0:
-                            y += 1
-                            break
-                        x = result[-1][0]
-                        y = result[-1][1] + 1
-                        if y < N:
-                            break
                 else:
-                    y = prev[1] + 1
-                    x = prev[0]
-                    result.pop()
+                    y += 1
+
+            # Check that each horizontal axis has a queen
+            if len(result) == N:
+                # print("Appending", result)
+                if result not in RESULTS:
+                    RESULTS.append(result)
+
+                    # Increase index
+                    index += 1
+                    # Recompute result and update x, y
+                    result = result[0:index + 1]
+                    x = result[-1][0]
+                    y = result[-1][1] + 1
+                if index >= N - 1 or (x == N - 1 and y == N - 1):
+                    break
             else:
-                y += 1
-
-        # Check that each horizontal axis has a queen
-        if len(result) == N:
-            # print("Appending", result)
-            if result not in RESULTS:
-                RESULTS.append(result)
-            break
-        y += 1
+                break
+            y += 1
 
 
+compute(0, 0)
 for result in RESULTS:
     print(result)
