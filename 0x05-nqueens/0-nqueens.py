@@ -116,13 +116,8 @@ def vertical(result: list, x: int, y: int):
 RESULTS = []
 
 
-def compute(x: int, y: int):
-    """Compute queens
-
-    Args:
-        x (int): x
-        y (int): y
-    """
+def compute():
+    """Compute queens"""
 
     # For each starting point
     for big_y in range(N):
@@ -181,6 +176,6 @@ def compute(x: int, y: int):
             y += 1
 
 
-compute(0, 0)
+compute()
 for result in RESULTS:
     print(result)
