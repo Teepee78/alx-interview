@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+"""Rotate 2d matrix"""
 
 
-# Make first array
 def rotate_2d_matrix(matrix):
     """Rotates a 2d matrix in place"""
 
