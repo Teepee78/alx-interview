@@ -8,7 +8,7 @@ def makeChange(coins, total):
     if total == 0:
         return 0
 
-    sorted_coins = [*reversed(sorted(coins))]
+    sorted_coins = [x for x in reversed(sorted(coins))]
     sum = 0
     count = 0
 
